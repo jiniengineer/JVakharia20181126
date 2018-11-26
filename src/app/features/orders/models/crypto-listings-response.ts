@@ -1,11 +1,11 @@
 import { ICryptoMetaData } from './crypto-metadata';
 
 export interface ICryptoListingResponse {
-    data: ICryptoListingData;
+    data: any;
     metadata: ICryptoMetaData;
 }
 
-export class ICryptoListingData {
+export interface ICryptoListingData {
     id: number;
     name: string;
     symbol: string;

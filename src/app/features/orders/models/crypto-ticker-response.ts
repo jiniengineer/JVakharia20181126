@@ -5,7 +5,7 @@ export interface ICryptoTickerResponse {
     metadata: ICryptoMetaData;
 }
 
-export class ICryptoTickerData {
+export interface ICryptoTickerData {
     id: number;
     name: string;
     symbol: string;

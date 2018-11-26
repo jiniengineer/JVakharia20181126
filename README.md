@@ -3,6 +3,7 @@
 git clone -b master https://github.com/jiniengineer/jvakharia20181126.git
 cd jvakharia20181126
 yarn
+yarn install
 yarn run build:dll
 yarn start
 ```
