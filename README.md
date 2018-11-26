@@ -3,11 +3,14 @@
 git clone -b master https://github.com/jiniengineer/jvakharia20181126.git
 cd jvakharia20181126
 yarn
+yarn run build:dll
 yarn start
 ```
 ## Basic scripts
 
-Use `yarn run build:dll` for dev builds.
+Use `yarn run build:dll` for dll builds.
+
+Use `yarn run build:dev` for dev builds.
 
 Use `yarn start` for dev server. Default dev port is `3000`.
 
@@ -28,22 +31,6 @@ Store-logger outputs ngrx actions to the console.
 To set your development mode store logging preference, go to the constant.js file and edit the `STORE_DEV_TOOLS` constant.
 Available options are `logger | none`
 
-### HMR (Hot Module Replacement)
-
-HMR mode allows you to update a particular module without reloading the entire application.
-The current state of your app is also stored in @ngrx/store allowing you to make updates to your
-code without losing your currently stored state.
-
-### AOT  Don'ts
-
-The following are some things that will make AOT compile fail.
-
-- Don’t use require statements for your templates or styles, use styleUrls and templateUrls, the angular2-template-loader plugin will change it to require at build time.
-- Don’t use default exports.
-- Don’t use form.controls.controlName, use form.get(‘controlName’)
-- Don’t use control.errors?.someError, use control.hasError(‘someError’)
-- Don’t use functions in your providers, routes or declarations, export a function and then reference that function name
-- Inputs, Outputs, View or Content Child(ren), Hostbindings, and any field you use from the template or annotate for Angular should be public
 
 ### Testing
 
