@@ -10,7 +10,7 @@ export class CurrencyType {
   symbol: string;
 
   constructor(data) {
-    Object.assign(this, data);
+    Object.assign(this, { id: data.id, name: data.name, symbol: data.symbol});
   }
 }
 
