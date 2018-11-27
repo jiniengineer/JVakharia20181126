@@ -64,7 +64,7 @@ export class AddEditOrderComponent implements OnInit, AfterContentChecked {
   onCurrencyTypeChange(event) {
     if (event.length > 0) {
       const value = event.split(':');
-      const id = value[0];
+      const id = value[1].trim();
       try {
         this.cryptoService.getCryptoPrice(id).subscribe(data => {
           this.orderForm.get('price').setValue(data);

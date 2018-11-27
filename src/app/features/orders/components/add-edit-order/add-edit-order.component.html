@@ -28,7 +28,7 @@
                   [ngClass]="{ 'is-invalid': !f.currencyType.valid && f.currencyType.touched }"
                   (change)="onCurrencyTypeChange($event.target.value)">
                   <option value="">Select</option>
-                  <option *ngFor="let currencyType of currencyTypes; trackBy: currencyTypesTrackByFn" [ngValue]="currencyType.symbol">
+                  <option *ngFor="let currencyType of currencyTypes; trackBy: currencyTypesTrackByFn" [ngValue]="currencyType.id">
                     {{ currencyType.name }}
                   </option>
                 </select>
