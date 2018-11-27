@@ -6,7 +6,7 @@ import {
   LoadCurrencyTypes,
   OrderModuleState,
   getFilteredCurrencies } from '../../state';
-import { tap, filter, map, take } from 'rxjs/operators';
+import { tap, filter, take } from 'rxjs/operators';
 import { ICurrencyType } from '../../models/currency-type';
 
 @Injectable({

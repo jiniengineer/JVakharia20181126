@@ -9,7 +9,7 @@ import * as fromRoot from './reducers';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-challenge',
   styleUrls: ['main.scss', './app.component.scss'],
   templateUrl: './app.component.html',
   encapsulation: ViewEncapsulation.None

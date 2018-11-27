@@ -7,7 +7,7 @@ import { IOrder } from '../../features/orders/models/order.model';
 })
 export class FakeBackendService implements InMemoryDbService {
   createDb() {
-    let orders: IOrder[] = [
+    const orders: IOrder[] = [
     {
         id: 4,
         merchantName: 'CrazyCups',
