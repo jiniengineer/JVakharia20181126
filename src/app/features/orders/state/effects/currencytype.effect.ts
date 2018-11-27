@@ -6,7 +6,7 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { Action } from '@ngrx/store';
 import { CryptoService } from '../../services/crypto.service';
-import { ICurrencyType } from '../../models/currency-type';
+import { CurrencyType } from '../../models/currency-type';
 import {
   CurrencyActionTypes,
   LoadCurrencyTypesSuccess,
@@ -22,7 +22,7 @@ export class CurrencyTypesEffects {
     ofType<LoadCurrencyTypes>(CurrencyActionTypes.LoadCurrencyTypes),
     switchMap(() =>
       this.cryptoService.getCurrencyListings().pipe(
-        map((currencyTypes: ICurrencyType[]) => {
+        map((currencyTypes: CurrencyType[]) => {
           // console.log('Currency Types: ', currencyTypes);
           return new LoadCurrencyTypesSuccess(currencyTypes);
         }),

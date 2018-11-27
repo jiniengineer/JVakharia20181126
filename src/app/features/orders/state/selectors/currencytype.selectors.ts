@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { ICurrencyType } from '../../models/currency-type';
+import { CurrencyType } from '../../models/currency-type';
 import { getOrderModuleState, OrderModuleState } from '../reducers';
 import * as fromCurrencyTypes from '../reducers/currencytype.reducer';
 
@@ -15,7 +15,7 @@ export const getAllCurrencyTypes = createSelector(
 
 export const getFilteredCurrencies = createSelector(
   getAllCurrencyTypes,
-  (currencyTypes: ICurrencyType[]) => {
+  (currencyTypes: CurrencyType[]) => {
     const types = currencyTypes.filter(currency =>
             (currency.symbol === 'BTC'
           || currency.symbol === 'BCH'

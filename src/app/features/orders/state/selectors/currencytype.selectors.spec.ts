@@ -1,14 +1,14 @@
 import * as fromCurrencyTypes from '../reducers/currencytype.reducer';
 import { getCurrencyTypesLoading, getCurrencyTypesLoaded } from '../reducers/currencytype.reducer';
-import { ICurrencyType } from '../../models/currency-type';
+import { CurrencyType } from '../../models/currency-type';
 import { getAllCurrencyTypes } from './currencytype.selectors';
 
 describe('CurencyType Selectors', () => {
     describe('getAllCurrencyTypes', () => {
       it('should return orders', () => {
-        const currencyTypes: ICurrencyType[] = [
-          { name: 'BitCoin', symbol: 'BCH' },
-          { name: 'Etherem', symbol: 'ETH' },
+        const currencyTypes: CurrencyType[] = [
+          { id: 1, name: 'BitCoin', symbol: 'BCH' },
+          { id: 2, name: 'Etherem', symbol: 'ETH' },
         ];
         const { initialState } = fromCurrencyTypes;
         const previousState = { ...initialState, currencyTypes };
@@ -17,18 +17,20 @@ describe('CurencyType Selectors', () => {
       });
     });
 
-    describe('getFilteredData', () => {
-        it('should return filtered and sorted data', () => {
-          const currencyTypes: ICurrencyType[] = [
-            { name: 'BitCoin', symbol: 'BCH' },
-            { name: 'Etherem', symbol: 'ETH' },
-            { name: 'LiteCoin', symbol: 'LTE'},
-            { name: 'RoundCoin', symbol: 'RTE'}
+    describe('getFilteredCurrencies', () => {
+        it('should return all currency types', () => {
+          const currencyTypes: CurrencyType[] = [
+            { id: 1, name: 'BitCoin', symbol: 'BCH' },
+            { id: 1027, name: 'Etherem', symbol: 'ETH' },
+            { id: 1831, name: 'BitCoin Cash', symbol: 'LTE'},
+            { id: 8071, name: 'RoundCoin', symbol: 'RTE'}
           ];
           const { initialState } = fromCurrencyTypes;
           const previousState = { ...initialState, currencyTypes };
           const slice = getAllCurrencyTypes(previousState);
-          expect(slice).toEqual(currencyTypes);
+          expect(slice).toEqual([{ id: 1, name: 'BitCoin', symbol: 'BCH' },
+          { id: 1027, name: 'Etherem', symbol: 'ETH' },
+          { id: 1831, name: 'BitCoin Cash', symbol: 'LTE'}]);
         });
       });
 

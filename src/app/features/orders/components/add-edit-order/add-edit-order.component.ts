@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { CryptoService } from '../../services/crypto.service';
-import { ICurrencyType } from '../../models/currency-type';
+import { CurrencyType } from '../../models/currency-type';
 import { IOrder, Order } from '../../models/order.model';
 import * as orderActions from '../../state/actions/order.action';
 import {
@@ -21,7 +21,7 @@ import { Observable } from 'rxjs';
 export class AddEditOrderComponent implements OnInit, AfterContentChecked {
   orderForm: FormGroup;
   addMode = true;
-  currencyTypes$: Observable<ICurrencyType[]>;
+  currencyTypes$: Observable<CurrencyType[]>;
   operationText = 'Create';
   id: number = undefined;
   order: IOrder;
@@ -61,7 +61,7 @@ export class AddEditOrderComponent implements OnInit, AfterContentChecked {
     this.orderForm.get('totalAmount').setValue(total);
   }
 
-  currencyTypesTrackByFn  = (index: number, currencyType: ICurrencyType) => currencyType.symbol;
+  currencyTypesTrackByFn  = (index: number, currencyType: CurrencyType) => currencyType.symbol;
 
   get f() { return this.orderForm.controls; }
 

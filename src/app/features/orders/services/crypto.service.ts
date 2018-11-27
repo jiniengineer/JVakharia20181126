@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { ICurrencyType } from '../models/currency-type';
+import { ICurrencyType, CurrencyType } from '../models/currency-type';
 import { ICryptoListingResponse, ICryptoListingData } from '../models/crypto-listings-response';
 import { ICryptoTickerResponse } from '../models/crypto-ticker-response';
-import { select } from '@ngrx/store';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +26,14 @@ export class CryptoService {
     );
   }
 
-  getCurrencyListings(): Observable<ICurrencyType[]> {
+  getCurrencyListings(): Observable<CurrencyType[]> {
     const url = `${this.baseUrl}listings/`;
     return this.http.get(url).pipe(
-      map((response: ICryptoListingResponse) => response.data),
+      map((response: ICryptoListingResponse) => {
+        const responseData: ICryptoListingData[] = response.data;
+        const details = responseData.map(data => new CurrencyType(data));
+        return details;
+      }),
       catchError((e) => throwError(e)));
   }
 

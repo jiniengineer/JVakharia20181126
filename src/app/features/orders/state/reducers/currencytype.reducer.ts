@@ -1,15 +1,15 @@
 import { EntityState, createEntityAdapter, EntityAdapter } from '@ngrx/entity';
-import { ICurrencyType } from '../../models/currency-type';
+import { CurrencyType } from '../../models/currency-type';
 import * as currencyTypeActions from '../actions/currencytype.action';
 
-export interface CurrencyTypesState extends EntityState<ICurrencyType> {
+export interface CurrencyTypesState extends EntityState<CurrencyType> {
   loading: boolean;
   loaded: boolean;
   error: string;
 }
 
-export const currencyTypesAdapter: EntityAdapter<ICurrencyType>
-  = createEntityAdapter<ICurrencyType>();
+export const currencyTypesAdapter: EntityAdapter<CurrencyType>
+  = createEntityAdapter<CurrencyType>();
 
 export const defaultCurrencyType: CurrencyTypesState = {
   ids: [],

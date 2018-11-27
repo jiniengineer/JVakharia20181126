@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { ICurrencyType } from '../../models/currency-type';
+import { CurrencyType } from '../../models/currency-type';
 
 export enum CurrencyActionTypes {
   LoadCurrencyTypes = '[CurrencyTypes] Load',
@@ -13,7 +13,7 @@ export class LoadCurrencyTypes implements Action {
 export class LoadCurrencyTypesSuccess implements Action {
   readonly type = CurrencyActionTypes.LoadCurrencyTypesSuccess;
 
-  constructor(public payload: ICurrencyType[]) {}
+  constructor(public payload: CurrencyType[]) {}
 }
 
 export type CurrencyAction =
