@@ -28,7 +28,7 @@
                   [ngClass]="{ 'is-invalid': !f.currencyType.valid && f.currencyType.touched }"
                   (change)="onCurrencyTypeChange($event.target.value)">
                   <option value="">Select</option>
-                  <option *ngFor="let currencyType of currencyTypes$ | async; trackBy: currencyTypesTrackByFn" [ngValue]="currencyType.symbol">
+                  <option *ngFor="let currencyType of currencyTypes; trackBy: currencyTypesTrackByFn" [ngValue]="currencyType.symbol">
                     {{ currencyType.name }}
                   </option>
                 </select>
@@ -45,18 +45,14 @@
           </div>
           <div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12 text-right">
                 <label>Price/crypto <span class="text-danger">*</span></label>
-              </div>
-              <div class="col-md-6 text-right">
                 <span class="total">{{ f.price.value | currency: 'USD' }}</span>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12 text-right">
                 <label>Amount Invoiced <span class="text-danger">*</span></label>
-              </div>
-              <div class="col-md-6 text-right">
                 <span class="total">{{ f.totalAmount.value | currency: 'USD' }}</span>
               </div>
             </div>

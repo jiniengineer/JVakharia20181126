@@ -6,6 +6,7 @@ import { ModalComponent } from '../modal/modal.component';
 import { NumbersOnlyDirective } from '../../directives/numbers-only.directive';
 import { OrderResolver } from './services/resolvers/order.resolver.service';
 import { OrdersGuard } from './services/guards/orders.guard';
+import { CurrencyTypesResolver } from './services/resolvers/currency-type.resolver.service';
 
 const orderRoutes: Routes = [
   {
@@ -15,13 +16,17 @@ const orderRoutes: Routes = [
   },
   {
     path: 'add',
-    component: AddEditOrderComponent
+    component: AddEditOrderComponent,
+    resolve: {
+      currencyTypes: CurrencyTypesResolver
+    }
   },
   {
     path: 'edit/:id',
     component: AddEditOrderComponent,
     resolve: {
-      order: OrderResolver
+      order: OrderResolver,
+      currencyTypes: CurrencyTypesResolver
     }
   }
 ];

@@ -6,12 +6,7 @@ import { CryptoService } from '../../services/crypto.service';
 import { CurrencyType } from '../../models/currency-type';
 import { IOrder, Order } from '../../models/order.model';
 import * as orderActions from '../../state/actions/order.action';
-import {
-  OrderModuleState,
-  LoadCurrencyTypes,
-  getFilteredCurrencies }
-  from '../../state/index';
-import { Observable } from 'rxjs';
+import { OrderModuleState } from '../../state/index';
 
 @Component({
   selector: 'app-add-edit-order',
@@ -21,7 +16,7 @@ import { Observable } from 'rxjs';
 export class AddEditOrderComponent implements OnInit, AfterContentChecked {
   orderForm: FormGroup;
   addMode = true;
-  currencyTypes$: Observable<CurrencyType[]>;
+  currencyTypes: CurrencyType[];
   operationText = 'Create';
   id: number = undefined;
   order: IOrder;
@@ -50,7 +45,8 @@ export class AddEditOrderComponent implements OnInit, AfterContentChecked {
       this.operationText = 'Update';
       this.orderForm.patchValue(order);
     }
-    this.getCryptoCurrencyTypes();
+
+    this.currencyTypes = this.route.snapshot.data['currencyTypes'];
   }
 
   ngAfterContentChecked()  {
@@ -64,11 +60,6 @@ export class AddEditOrderComponent implements OnInit, AfterContentChecked {
   currencyTypesTrackByFn  = (index: number, currencyType: CurrencyType) => currencyType.symbol;
 
   get f() { return this.orderForm.controls; }
-
-  getCryptoCurrencyTypes() {
-    this.store.dispatch(new LoadCurrencyTypes());
-    this.currencyTypes$ = this.store.pipe(select(getFilteredCurrencies));
-  }
 
   onCurrencyTypeChange(event) {
     if (event.length > 0) {
